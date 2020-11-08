@@ -28,4 +28,3 @@ ruspiro-test-framework = { git = "https://github.com/RusPiRo/ruspiro-test-framew
 ruspiro_pi3 = [ ]
 
 [patch.crates-io]
-#ruspiro-test-framework = { path = "../ruspiro-test-framework" }
