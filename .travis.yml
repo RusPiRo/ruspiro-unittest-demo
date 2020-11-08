@@ -23,8 +23,10 @@ jobs:
       name: "Compile and UnittestThe Crate"
       install:
         - sudo apt update
+        - sudo apt-cache madison qemu
         #- sudo apt install qemu-kvm
-        - sudo apt-get install qemu-system-arm
+        - sudo apt-get install qemu
+        #- sudo apt-get install qemu-system-arm
         - sudo apt-get install -y gcc-aarch64-linux-gnu
         - cargo install cargo-xbuild
         - cargo install cargo-make
