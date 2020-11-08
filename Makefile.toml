@@ -6,6 +6,7 @@
 [env.development]
 CC = "aarch64-none-elf-gcc"
 AR = "aarch64-none-elf-ar"
+OC = "aarch64-none-elf-objcopy"
 CFLAGS = "-march=armv8-a -Wall -O3 -nostdlib -nostartfiles -ffreestanding -mtune=cortex-a53"
 RUSTFLAGS = "-C linker=${CC} -C target-cpu=cortex-a53 -C link-arg=-nostartfiles -C link-arg=-T./link64.ld"
 BUILD_TARGET = "aarch64-unknown-none"
@@ -14,6 +15,7 @@ BUILD_TARGET = "aarch64-unknown-none"
 [env.travis]
 CC = "aarch64-linux-gnu-gcc"
 AR = "aarch64-linux-gnu-ar"
+OC = "aarch64-linux-gnu-objcopy"
 CFLAGS = "-march=armv8-a -Wall -O3 -nostdlib -nostartfiles -ffreestanding -mtune=cortex-a53"
 RUSTFLAGS = "-C linker=${CC} -C target-cpu=cortex-a53 -C link-arg=-nostartfiles -C link-arg=-T./link64.ld"
 BUILD_TARGET = "aarch64-unknown-none"
@@ -24,7 +26,7 @@ command = "cargo"
 args = ["xtest", "--target", "${BUILD_TARGET}", "--tests", "--features", "${FEATURES}"]
 
 [tasks.qemu-test-objcopy]
-command = "aarch64-none-elf-objcopy"
+command = "${OC}"
 args = ["-O",  "binary",  "${CARGO_MAKE_TASK_ARGS}", "./target/kernel-test.img"]
 
 [tasks.qemu-test]
