@@ -11,7 +11,7 @@ rust:
   - nightly
 
 # increase build speed by caching installed cargo dependencies
-# cache: cargo
+cache: cargo
 
 # define the stages and their order
 stages:
@@ -32,8 +32,7 @@ jobs:
         - rustup component add rust-src
         - rustup component add llvm-tools-preview
         # if we not build a PR we remove the patch of the dependencies to their github repo's
-        - 'if [ "$TRAVIS_PULL_REQUEST" == "false" ]; then sed -i.bak "/\[patch\.crates-io\]/,$ s/ruspiro-\(.*\)/# ruspiro-\1/g" Cargo.toml; fi'
-        - cat Cargo.toml
-        - cat Makefile.toml
-        - cargo update
+        - 'if [ "$TRAVIS_PULL_REQUEST" == "false" ]; then sed -i "/\[patch\.crates-io\]/,$ s/ruspiro-\(.*\)/# ruspiro-\1/g" Cargo.toml; fi'
+        # adjust the config.toml to call the test runner with the travis profile
+        - sed -i 's/\(cargo make qemu-test\)/\1 --profile travis/g' .cargo/config.toml
       script: cargo make --profile travis unittest
