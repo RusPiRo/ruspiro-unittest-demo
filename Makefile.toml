@@ -26,7 +26,7 @@ command = "cargo"
 args = ["xtest", "--target", "${BUILD_TARGET}", "--tests", "--features", "${FEATURES}"]
 
 [tasks.qemu-test-objcopy]
-command = "aarch64-linux-gnu-objcopy"
+command = "${OCOPY}"
 args = ["-O",  "binary",  "${CARGO_MAKE_TASK_ARGS}", "./target/kernel-test.img"]
 
 [tasks.qemu-test]
