@@ -24,6 +24,7 @@ jobs:
       install:
         - sudo apt update
         - sudo apt-cache madison qemu
+        - sudo apt-cache policy qemu
         #- sudo apt install qemu-kvm
         - sudo apt-get install qemu
         #- sudo apt-get install qemu-system-arm
