@@ -1,0 +1,31 @@
+[package]
+name = "ruspiro-unittest-demo"
+authors = ["André Borrmann <pspwizard@gmx.de>"]
+version = "0.3.1" # remember to update html_root_url
+description = "Simple and easy to use singleton pattern"
+license = "Apache-2.0"
+repository = "https://github.com/RusPiRo/ruspiro-singleton/tree/v||VERSION||"
+documentation = "https://docs.rs/ruspiro-singleton/||VERSION||"
+readme = "README.md"
+keywords = ["RusPiRo", "singleton", "raspberrypi"]
+categories = ["no-std", "embedded"]
+edition = "2018"
+exclude = [".travis.yml", "Makefile.toml"]
+publish = false
+
+[badges]
+travis-ci = { repository = "RusPiRo/ruspiro-singleton", branch = "master" }
+maintenance = { status = "actively-developed" }
+
+[lib]
+
+[dev-dependencies]
+ruspiro-test-framework = { git = "https://github.com/RusPiRo/ruspiro-test-framework.git", features = ["test", "ruspiro_pi3"] }
+
+[dependencies]
+
+[features]
+ruspiro_pi3 = [ ]
+
+[patch.crates-io]
+
