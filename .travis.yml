@@ -4,6 +4,8 @@ branches:
   only:
     - master
 
+dist: focal
+
 language: rust
 
 rust:
@@ -22,23 +24,24 @@ jobs:
     - stage: unittest
       name: "Compile and UnittestThe Crate"
       install:
-        - sudo add-apt-repository ppa:deadsnakes/ppa -y
-        - sudo apt-get update
-        - sudo apt-get install python3.6
-        - python3 --version
-        - sudo update-alternatives --install /usr/bin/python3 python3 /usr/bin/python3.6 4
-        - python3 --version
-        - sudo apt-get install ninja-build
-        #- sudo apt-cache madison qemu
-        #- sudo apt-cache policy qemu
-        #- sudo apt-get install qemu
-        #- sudo apt-get install qemu-system-arm
-        - wget https://download.qemu.org/qemu-5.2.0-rc0.tar.xz
-        - tar xvJf qemu-5.2.0-rc0.tar.xz > /dev/null
-        - cd qemu-5.2.0-rc0
-        - ./configure
-        - make
-        - find . --name "qemu-system-*"
+        #- sudo add-apt-repository ppa:deadsnakes/ppa -y
+        #- sudo apt-get update
+        #- sudo apt-get install python3.6
+        #- python3 --version
+        #- sudo update-alternatives --install /usr/bin/python3 python3 /usr/bin/python3.6 4
+        #- python3 --version
+        #- sudo apt-get install ninja-build
+        
+        - sudo apt-cache madison qemu
+        - sudo apt-cache policy qemu
+        - sudo apt-get install qemu
+        - sudo apt-get install qemu-system-arm
+        #- wget https://download.qemu.org/qemu-5.2.0-rc0.tar.xz
+        #- tar xvJf qemu-5.2.0-rc0.tar.xz > /dev/null
+        #- cd qemu-5.2.0-rc0
+        #- ./configure
+        #- make
+        #- find . --name "qemu-system-*"
 
         - sudo apt-get install -y gcc-aarch64-linux-gnu
         - cargo install cargo-xbuild
