@@ -25,6 +25,9 @@ jobs:
         #- sudo add-apt-repository ppa:deadsnakes/ppa
         - sudo apt-get update
         - sudo apt-get install python3.9
+        - python3 --version
+        - sudo update-alternatives --install /usr/bin/python3 python3 /usr/bin/python3.9 4
+        - python3 --version
         #- sudo apt-cache madison qemu
         #- sudo apt-cache policy qemu
         #- sudo apt-get install qemu
