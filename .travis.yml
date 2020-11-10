@@ -23,6 +23,7 @@ jobs:
       name: "Compile and UnittestThe Crate"
       install:
         - sudo apt update
+        - sudo apt install python3
         #- sudo apt-cache madison qemu
         #- sudo apt-cache policy qemu
         #- sudo apt-get install qemu
