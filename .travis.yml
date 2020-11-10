@@ -34,13 +34,13 @@ jobs:
         
         - sudo apt-cache madison qemu
         - sudo apt-cache policy qemu
-        - sudo apt-get install qemu
-        - sudo apt-get install qemu-system-arm
-        #- wget https://download.qemu.org/qemu-5.2.0-rc0.tar.xz
-        #- tar xvJf qemu-5.2.0-rc0.tar.xz > /dev/null
-        #- cd qemu-5.2.0-rc0
-        #- ./configure
-        #- make
+        #- sudo apt-get install qemu
+        #- sudo apt-get install qemu-system-arm
+        - wget https://download.qemu.org/qemu-5.2.0-rc0.tar.xz
+        - tar xvJf qemu-5.2.0-rc0.tar.xz > /dev/null
+        - cd qemu-5.2.0-rc0
+        - ./configure
+        - make
         #- find . --name "qemu-system-*"
 
         - sudo apt-get install -y gcc-aarch64-linux-gnu
