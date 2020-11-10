@@ -28,7 +28,7 @@ jobs:
         #- sudo apt-get install qemu
         #- sudo apt-get install qemu-system-arm
         - wget https://download.qemu.org/qemu-5.2.0-rc0.tar.xz
-        - tar xvJf qemu-5.2.0-rc0.tar.xz
+        - tar xvJf qemu-5.2.0-rc0.tar.xz > /dev/null
         - cd qemu-5.2.0-rc0
         - ./configure
         - make
