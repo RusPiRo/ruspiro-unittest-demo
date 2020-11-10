@@ -30,7 +30,7 @@ jobs:
         #- python3 --version
         #- sudo update-alternatives --install /usr/bin/python3 python3 /usr/bin/python3.6 4
         #- python3 --version
-        #- sudo apt-get install ninja-build
+        - sudo apt-get install ninja-build
         
         - sudo apt-cache madison qemu
         - sudo apt-cache policy qemu
