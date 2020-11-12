@@ -40,7 +40,7 @@ jobs:
         - tar xvJf qemu-5.2.0-rc0.tar.xz > /dev/null
         - cd qemu-5.2.0-rc0
         - ./configure
-        - make > /dev/null
+        - travis_wait make > /dev/null
         #- find . --name "qemu-system-*"
 
         - sudo apt-get install -y gcc-aarch64-linux-gnu
