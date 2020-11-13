@@ -22,7 +22,7 @@ CFLAGS = "-march=armv8-a -Wall -O3 -nostdlib -nostartfiles -ffreestanding -mtune
 RUSTFLAGS = "-C linker=${CC} -C target-cpu=cortex-a53 -C link-arg=-nostartfiles -C link-arg=-T./link64.ld"
 BUILD_TARGET = "aarch64-unknown-none"
 QEMUMACHINE = "raspi3b"
-QEMUCMD = "qemu/bin/qemu-system-aarch64"
+QEMUCMD = "./qemu/bin/qemu-system-aarch64"
 
 [tasks.unittest]
 env = { FEATURES = "ruspiro_pi3" }

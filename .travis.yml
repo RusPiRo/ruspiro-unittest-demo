@@ -42,7 +42,8 @@ jobs:
         - tar xvJf qemu-5.2.0-rc0.tar.xz > /dev/null
         - cd qemu-5.2.0-rc0
         #- ./configure --help
-        - ./configure --disable-kvm --prefix=/home/travis/build/qemu --target-list="arm-softmmu aarch64-softmmu"
+        #--prefix=/home/travis/build/qemu
+        - ./configure --disable-kvm --prefix=$TRAVIS_BUILD_DIR/qemu --target-list="arm-softmmu aarch64-softmmu"
         - travis_wait make
         - make
         - sudo make install
