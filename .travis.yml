@@ -13,7 +13,9 @@ rust:
   - nightly
 
 # increase build speed by caching installed cargo dependencies
-cache: cargo
+cache:
+  - cargo
+  - qemu
 
 # define the stages and their order
 stages:

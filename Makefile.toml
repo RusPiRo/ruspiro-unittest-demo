@@ -11,6 +11,7 @@ CFLAGS = "-march=armv8-a -Wall -O3 -nostdlib -nostartfiles -ffreestanding -mtune
 RUSTFLAGS = "-C linker=${CC} -C target-cpu=cortex-a53 -C link-arg=-nostartfiles -C link-arg=-T./link64.ld"
 BUILD_TARGET = "aarch64-unknown-none"
 QEMUMACHINE = "raspi3"
+QEMUCMD = "qemu-system-aarch64"
 
 # AARCH64 specific Travis CI env. variables. "aarch64-none-elf" is not available there as it seems
 [env.travis]
@@ -21,6 +22,7 @@ CFLAGS = "-march=armv8-a -Wall -O3 -nostdlib -nostartfiles -ffreestanding -mtune
 RUSTFLAGS = "-C linker=${CC} -C target-cpu=cortex-a53 -C link-arg=-nostartfiles -C link-arg=-T./link64.ld"
 BUILD_TARGET = "aarch64-unknown-none"
 QEMUMACHINE = "raspi3b"
+QEMUCMD = "qemu/bin/qemu-system-aarch64"
 
 [tasks.unittest]
 env = { FEATURES = "ruspiro_pi3" }
@@ -32,7 +34,7 @@ command = "${OCOPY}"
 args = ["-O",  "binary",  "${CARGO_MAKE_TASK_ARGS}", "./target/kernel-test.img"]
 
 [tasks.qemu-test]
-command = "qemu-system-aarch64"
+command = "${QEMUCMD}"
 args = [
     "-semihosting", "-display", "none", "-M", "${QEMUMACHINE}", "-kernel", "./target/kernel-test.img", "-serial", "null", "-serial", "stdio", "-d", "int,mmu", "-D", "qemu-test.log"
 ]
