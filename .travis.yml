@@ -61,3 +61,5 @@ jobs:
         # adjust the config.toml to call the test runner with the travis profile
         - sed -i 's/\(cargo make qemu-test\)/\1 --profile travis/g' .cargo/config.toml
       script: cargo make --profile travis unittest
+      after_failure:
+        - cat qemu-test.log
