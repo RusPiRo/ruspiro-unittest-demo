@@ -31,12 +31,12 @@ args = ["xtest", "--target", "${BUILD_TARGET}", "--tests", "--features", "${FEAT
 
 [tasks.qemu-test-objcopy]
 command = "${OCOPY}"
-args = ["-O",  "binary",  "${CARGO_MAKE_TASK_ARGS}", "./target/kernel-test.img"]
+args = ["-O",  "binary",  "${CARGO_MAKE_TASK_ARGS}", "./target/kernel8.img"]
 
 [tasks.qemu-test]
 command = "${QEMUCMD}"
 args = [
-    "-semihosting", "-nographic", "-M", "${QEMUMACHINE}", "-kernel", "./target/kernel-test.img", "-serial", "null", "-serial", "mon:stdio", "-d", "int,mmu",
+    "-semihosting", "-nographic", "-M", "${QEMUMACHINE}", "-kernel", "./target/kernel8.img", "-serial", "null", "-serial", "mon:stdio", "-d", "int,mmu",
     # "-D", "qemu-test.log"
 ]
 dependencies = [
