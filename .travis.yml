@@ -63,3 +63,4 @@ jobs:
       script: cargo make --profile travis unittest
       after_failure:
         - cat qemu-test.log
+        - sleep 10

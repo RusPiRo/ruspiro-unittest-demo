@@ -36,7 +36,8 @@ args = ["-O",  "binary",  "${CARGO_MAKE_TASK_ARGS}", "./target/kernel-test.img"]
 [tasks.qemu-test]
 command = "${QEMUCMD}"
 args = [
-    "-semihosting", "-nographic", "-M", "${QEMUMACHINE}", "-kernel", "./target/kernel-test.img", "-serial", "null", "-serial", "mon:stdio", "-d", "int,mmu", "-D", "qemu-test.log"
+    "-semihosting", "-nographic", "-M", "${QEMUMACHINE}", "-kernel", "./target/kernel-test.img", "-serial", "null", "-serial", "mon:stdio", "-d", "int,mmu",
+    # "-D", "qemu-test.log"
 ]
 dependencies = [
     "qemu-test-objcopy"
