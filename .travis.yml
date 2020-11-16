@@ -57,7 +57,7 @@ jobs:
         - rustup component add rust-src
         - rustup component add llvm-tools-preview
         # if we not build a PR we remove the patch of the dependencies to their github repo's
-        - 'if [ "$TRAVIS_PULL_REQUEST" == "false" ]; then sed -i "/\[patch\.crates-io\]/,$ s/ruspiro-\(.*\)/# ruspiro-\1/g" Cargo.toml; fi'
+        #- 'if [ "$TRAVIS_PULL_REQUEST" == "false" ]; then sed -i "/\[patch\.crates-io\]/,$ s/ruspiro-\(.*\)/# ruspiro-\1/g" Cargo.toml; fi'
         # adjust the config.toml to call the test runner with the travis profile
         - sed -i 's/\(cargo make qemu-test\)/\1 --profile travis/g' .cargo/config.toml
       script: cargo make --profile travis unittest
