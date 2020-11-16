@@ -28,3 +28,4 @@ ruspiro-test-framework = { git = "https://github.com/RusPiRo/ruspiro-test-framew
 ruspiro_pi3 = [ ]
 
 [patch.crates-io]
+ruspiro-boot = { git = "https://github.com/RusPiRo/ruspiro-boot.git", branch = "feature/testframework" }
