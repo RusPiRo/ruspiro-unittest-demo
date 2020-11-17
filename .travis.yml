@@ -4,6 +4,7 @@ branches:
   only:
     - master
 
+# use a newer Ubuntu release
 dist: focal
 
 language: rust
@@ -26,23 +27,10 @@ jobs:
     - stage: unittest
       name: "Compile and UnittestThe Crate"
       install:
-        #- sudo add-apt-repository ppa:deadsnakes/ppa -y
-        #- sudo apt-get update
-        #- sudo apt-get install python3.6
-        #- python3 --version
-        #- sudo update-alternatives --install /usr/bin/python3 python3 /usr/bin/python3.6 4
-        #- python3 --version
         - sudo apt-get install ninja-build
-        
-        - sudo apt-cache madison qemu
-        - sudo apt-cache policy qemu
-        #- sudo apt-get install qemu
-        #- sudo apt-get install qemu-system-arm
         - wget https://download.qemu.org/qemu-5.2.0-rc0.tar.xz
         - tar xvJf qemu-5.2.0-rc0.tar.xz > /dev/null
         - cd qemu-5.2.0-rc0
-        #- ./configure --help
-        #--prefix=/home/travis/build/qemu
         - ./configure --disable-kvm --prefix=$TRAVIS_BUILD_DIR/qemu --target-list="arm-softmmu aarch64-softmmu"
         - travis_wait make
         - make
@@ -57,10 +45,7 @@ jobs:
         - rustup component add rust-src
         - rustup component add llvm-tools-preview
         # if we not build a PR we remove the patch of the dependencies to their github repo's
-        #- 'if [ "$TRAVIS_PULL_REQUEST" == "false" ]; then sed -i "/\[patch\.crates-io\]/,$ s/ruspiro-\(.*\)/# ruspiro-\1/g" Cargo.toml; fi'
+        - 'if [ "$TRAVIS_PULL_REQUEST" == "false" ]; then sed -i "/\[patch\.crates-io\]/,$ s/ruspiro-\(.*\)/# ruspiro-\1/g" Cargo.toml; fi'
         # adjust the config.toml to call the test runner with the travis profile
         - sed -i 's/\(cargo make qemu-test\)/\1 --profile travis/g' .cargo/config.toml
       script: cargo make --profile travis unittest
-      after_failure:
-        - cat qemu-test.log
-        - sleep 10

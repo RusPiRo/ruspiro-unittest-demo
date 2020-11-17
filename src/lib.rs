@@ -31,9 +31,10 @@ mod tests {
         assert_eq!(1+1, 2);
     }
 
+    /*
     #[ruspiro_test]
     fn simple_unit_test_failing() {
         assert_eq!(1+1, 4);
     }
-
+    */
 }
